@@ -3,16 +3,15 @@
 {% block content %}
     <h1>{{ ls.name }}</h1>
 
-    {% for name in ls.item_set.all %}
-        {{ item.Kattis_id }}
-    {% endfor %}
-    {# Add a button that allows you to add items to the list #}
-    <form>
 
-    <button type="submit" name="save">Add problem</button>
-    <div class="search">
+    {# Add a button that allows you to add items to the list #}
+    <form method="post" action="/list/{{ls.name}}">
+    {% csrf_token %}
+        {% for item in ls.question_set.all %}
+        <div><a href="{{ item.link }}">{{ item.Kattis_id }}</a></div>
+    {% endfor %}
         <input type="text" name="add">
-    </div>
+    <button type="submit" name="save">Add problem</button>
+
     </form>
-    <div class="search"></div>
 {% endblock %}
