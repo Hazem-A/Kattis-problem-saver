@@ -1,7 +1,7 @@
 {% extends 'main/home.html' %}
 
 {% block content %}
-    <form method="post" action="create.html" class="form-group">
+    <form method="post" action="/create/" class="form-group">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" name="save">Submit</button>
